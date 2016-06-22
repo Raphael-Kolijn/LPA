@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LPAproject
 {
-    class huurder
+    public class huurder
     {
         public string naam;
         public string email;
@@ -15,6 +15,9 @@ namespace LPAproject
         {
             this.naam = Naam;
             this.email = Email;
+            // TODO: Complete member initialization
         }
+
+       
     }
 }

@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace LPAproject
 {
-    class contract  // Denk na over implementatie
+    public class contract  // Denk na over implementatie
     {
         public huurder huurder;
         public List<Boot> boten;
         public List<bijkomendArtikel> bijkomendeArtikelen;
+        public DateTime datumVan;
+        public DateTime datumTot;
 
-        public contract(huurder Huurder)
+        public contract(huurder Huurder, List<Boot> Boten, List<bijkomendArtikel> BijkomendeArtikelen, DateTime DatumVan, DateTime DatumTot)
         {
             this.huurder = Huurder;
+            this.boten = Boten;
+            this.bijkomendeArtikelen = BijkomendeArtikelen;
+            this.datumVan = DatumVan;
+            this.datumTot = DatumTot;
         }
-
     }
 }

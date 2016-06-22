@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace LPAproject
 {
-    class motorboot : Boot
+    public class motorboot : Boot
     {
-        private bool motor = true;
-        public int prijs = 15;
-        public int tankinhoud;
+        public static List<motorboot> alleMotorBoten = new List<motorboot>();
 
-        public motorboot(int TankInhoud)
+        public string naam;
+        private readonly bool motor = true;
+        public readonly double prijs = 15;
+        public int tankinhoud {get; set;}
+
+        public motorboot(int TankInhoud, string Naam)
         {
             this.tankinhoud = TankInhoud;
+            this.naam = Naam;
         }
     }
 }

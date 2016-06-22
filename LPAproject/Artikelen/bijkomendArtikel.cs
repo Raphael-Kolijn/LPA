@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace LPAproject
 {
-    class bijkomendArtikel : prijs
+    public class bijkomendArtikel : prijs
     {
         public string naam { get; set; }
-        public int prijs { get; set; }
+        public double prijs { get; set; }
 
-        public bijkomendArtikel(string naam, int prijs)
+        public bijkomendArtikel(string naam, double prijs)
         {
             this.naam = naam;
             this.prijs = prijs;

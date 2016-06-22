@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.AdminWachtwoordTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.adminLogoutBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.budgetBijkomendeArtikelenLB = new System.Windows.Forms.ListBox();
             this.budgetBijkomendeArtikelenCB = new System.Windows.Forms.ComboBox();
@@ -40,6 +40,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.nieuwContractBtn = new System.Windows.Forms.Button();
+            this.LBContracten = new System.Windows.Forms.ListBox();
+            this.x = new System.Windows.Forms.Button();
+            this.adminLabel = new System.Windows.Forms.Label();
+            this.adminLB = new System.Windows.Forms.ListBox();
+            this.adminRadioVerwijder = new System.Windows.Forms.RadioButton();
+            this.adminRadioVoegToe = new System.Windows.Forms.RadioButton();
+            this.adminRadioWijzig = new System.Windows.Forms.RadioButton();
+            this.button3 = new System.Windows.Forms.Button();
+            this.budgetBotenLB = new System.Windows.Forms.ListBox();
+            this.radioIjsselmeer = new System.Windows.Forms.RadioButton();
+            this.radioNoordzee = new System.Windows.Forms.RadioButton();
+            this.motorBootLB = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.budgetNUD)).BeginInit();
             this.SuspendLayout();
@@ -54,14 +68,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(520, 84);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(272, 345);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // AdminWachtwoordTextBox
             // 
             this.AdminWachtwoordTextBox.Location = new System.Drawing.Point(26, 32);
@@ -72,23 +78,38 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.adminLogoutBtn);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Admin";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // adminLogoutBtn
+            // 
+            this.adminLogoutBtn.Location = new System.Drawing.Point(14, 72);
+            this.adminLogoutBtn.Name = "adminLogoutBtn";
+            this.adminLogoutBtn.Size = new System.Drawing.Size(75, 23);
+            this.adminLogoutBtn.TabIndex = 14;
+            this.adminLogoutBtn.Text = "Logout";
+            this.adminLogoutBtn.UseVisualStyleBackColor = true;
+            this.adminLogoutBtn.Visible = false;
+            this.adminLogoutBtn.Click += new System.EventHandler(this.adminLogoutBtn_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.radioNoordzee);
+            this.groupBox2.Controls.Add(this.radioIjsselmeer);
+            this.groupBox2.Controls.Add(this.budgetBotenLB);
+            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.budgetBijkomendeArtikelenLB);
             this.groupBox2.Controls.Add(this.budgetBijkomendeArtikelenCB);
             this.groupBox2.Controls.Add(this.budgetBootCB);
             this.groupBox2.Controls.Add(this.budgetNUD);
             this.groupBox2.Location = new System.Drawing.Point(13, 123);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 306);
+            this.groupBox2.Size = new System.Drawing.Size(280, 306);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Budget Berekening";
@@ -98,7 +119,7 @@
             this.budgetBijkomendeArtikelenLB.FormattingEnabled = true;
             this.budgetBijkomendeArtikelenLB.Location = new System.Drawing.Point(7, 102);
             this.budgetBijkomendeArtikelenLB.Name = "budgetBijkomendeArtikelenLB";
-            this.budgetBijkomendeArtikelenLB.Size = new System.Drawing.Size(187, 199);
+            this.budgetBijkomendeArtikelenLB.Size = new System.Drawing.Size(121, 173);
             this.budgetBijkomendeArtikelenLB.TabIndex = 3;
             // 
             // budgetBijkomendeArtikelenCB
@@ -113,7 +134,7 @@
             this.budgetBijkomendeArtikelenCB.Name = "budgetBijkomendeArtikelenCB";
             this.budgetBijkomendeArtikelenCB.Size = new System.Drawing.Size(121, 21);
             this.budgetBijkomendeArtikelenCB.TabIndex = 2;
-            this.budgetBijkomendeArtikelenCB.Text = "Bijkomde artikelen..";
+            this.budgetBijkomendeArtikelenCB.Text = "Bijkomende artikelen..";
             this.budgetBijkomendeArtikelenCB.SelectedIndexChanged += new System.EventHandler(this.budgetBijkomendeArtikelenCB_SelectedIndexChanged);
             // 
             // budgetBootCB
@@ -127,9 +148,11 @@
             this.budgetBootCB.Size = new System.Drawing.Size(121, 21);
             this.budgetBootCB.TabIndex = 1;
             this.budgetBootCB.Text = "Boot type..";
+            this.budgetBootCB.SelectedIndexChanged += new System.EventHandler(this.budgetBootCB_SelectedIndexChanged);
             // 
             // budgetNUD
             // 
+            this.budgetNUD.DecimalPlaces = 2;
             this.budgetNUD.Location = new System.Drawing.Point(7, 20);
             this.budgetNUD.Maximum = new decimal(new int[] {
             10000,
@@ -145,7 +168,7 @@
             this.budgetNUD.Size = new System.Drawing.Size(120, 20);
             this.budgetNUD.TabIndex = 0;
             this.budgetNUD.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -153,7 +176,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(517, 68);
+            this.label1.Location = new System.Drawing.Point(605, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 5;
@@ -161,7 +184,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(520, 13);
+            this.button2.Location = new System.Drawing.Point(608, 13);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -170,7 +193,7 @@
             // 
             // nieuwContractBtn
             // 
-            this.nieuwContractBtn.Location = new System.Drawing.Point(520, 42);
+            this.nieuwContractBtn.Location = new System.Drawing.Point(608, 42);
             this.nieuwContractBtn.Name = "nieuwContractBtn";
             this.nieuwContractBtn.Size = new System.Drawing.Size(114, 23);
             this.nieuwContractBtn.TabIndex = 7;
@@ -178,22 +201,166 @@
             this.nieuwContractBtn.UseVisualStyleBackColor = true;
             this.nieuwContractBtn.Click += new System.EventHandler(this.button3_Click);
             // 
+            // LBContracten
+            // 
+            this.LBContracten.FormattingEnabled = true;
+            this.LBContracten.Location = new System.Drawing.Point(608, 84);
+            this.LBContracten.Name = "LBContracten";
+            this.LBContracten.Size = new System.Drawing.Size(278, 342);
+            this.LBContracten.TabIndex = 8;
+            this.LBContracten.SelectedIndexChanged += new System.EventHandler(this.LBContracten_SelectedIndexChanged);
+            // 
+            // x
+            // 
+            this.x.Location = new System.Drawing.Point(805, 42);
+            this.x.Name = "x";
+            this.x.Size = new System.Drawing.Size(75, 23);
+            this.x.TabIndex = 9;
+            this.x.Text = "Ververs";
+            this.x.UseVisualStyleBackColor = true;
+            this.x.Click += new System.EventHandler(this.verversBtn);
+            // 
+            // adminLabel
+            // 
+            this.adminLabel.AutoSize = true;
+            this.adminLabel.Location = new System.Drawing.Point(404, 18);
+            this.adminLabel.Name = "adminLabel";
+            this.adminLabel.Size = new System.Drawing.Size(101, 13);
+            this.adminLabel.TabIndex = 0;
+            this.adminLabel.Text = "ADMIN INGELOGD";
+            this.adminLabel.Visible = false;
+            // 
+            // adminLB
+            // 
+            this.adminLB.FormattingEnabled = true;
+            this.adminLB.Items.AddRange(new object[] {
+            "Hier komt de voorraad te staan zodat de admin ",
+            "deze kan verwijderen, toevoegen en wijzigen."});
+            this.adminLB.Location = new System.Drawing.Point(320, 42);
+            this.adminLB.Name = "adminLB";
+            this.adminLB.Size = new System.Drawing.Size(268, 342);
+            this.adminLB.TabIndex = 10;
+            this.adminLB.Visible = false;
+            // 
+            // adminRadioVerwijder
+            // 
+            this.adminRadioVerwijder.AutoSize = true;
+            this.adminRadioVerwijder.Location = new System.Drawing.Point(320, 390);
+            this.adminRadioVerwijder.Name = "adminRadioVerwijder";
+            this.adminRadioVerwijder.Size = new System.Drawing.Size(68, 17);
+            this.adminRadioVerwijder.TabIndex = 11;
+            this.adminRadioVerwijder.TabStop = true;
+            this.adminRadioVerwijder.Text = "Verwijder";
+            this.adminRadioVerwijder.UseVisualStyleBackColor = true;
+            this.adminRadioVerwijder.Visible = false;
+            // 
+            // adminRadioVoegToe
+            // 
+            this.adminRadioVoegToe.AutoSize = true;
+            this.adminRadioVoegToe.Location = new System.Drawing.Point(407, 390);
+            this.adminRadioVoegToe.Name = "adminRadioVoegToe";
+            this.adminRadioVoegToe.Size = new System.Drawing.Size(68, 17);
+            this.adminRadioVoegToe.TabIndex = 12;
+            this.adminRadioVoegToe.TabStop = true;
+            this.adminRadioVoegToe.Text = "Voeg toe";
+            this.adminRadioVoegToe.UseVisualStyleBackColor = true;
+            this.adminRadioVoegToe.Visible = false;
+            // 
+            // adminRadioWijzig
+            // 
+            this.adminRadioWijzig.AutoSize = true;
+            this.adminRadioWijzig.Location = new System.Drawing.Point(496, 390);
+            this.adminRadioWijzig.Name = "adminRadioWijzig";
+            this.adminRadioWijzig.Size = new System.Drawing.Size(53, 17);
+            this.adminRadioWijzig.TabIndex = 13;
+            this.adminRadioWijzig.TabStop = true;
+            this.adminRadioWijzig.Text = "Wijzig";
+            this.adminRadioWijzig.UseVisualStyleBackColor = true;
+            this.adminRadioWijzig.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(7, 277);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Bereken";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // budgetBotenLB
+            // 
+            this.budgetBotenLB.FormattingEnabled = true;
+            this.budgetBotenLB.Location = new System.Drawing.Point(149, 102);
+            this.budgetBotenLB.Name = "budgetBotenLB";
+            this.budgetBotenLB.Size = new System.Drawing.Size(121, 173);
+            this.budgetBotenLB.TabIndex = 5;
+            // 
+            // radioIjsselmeer
+            // 
+            this.radioIjsselmeer.AutoSize = true;
+            this.radioIjsselmeer.Location = new System.Drawing.Point(149, 47);
+            this.radioIjsselmeer.Name = "radioIjsselmeer";
+            this.radioIjsselmeer.Size = new System.Drawing.Size(71, 17);
+            this.radioIjsselmeer.TabIndex = 6;
+            this.radioIjsselmeer.TabStop = true;
+            this.radioIjsselmeer.Text = "Ijsselmeer";
+            this.radioIjsselmeer.UseVisualStyleBackColor = true;
+            // 
+            // radioNoordzee
+            // 
+            this.radioNoordzee.AutoSize = true;
+            this.radioNoordzee.Location = new System.Drawing.Point(149, 70);
+            this.radioNoordzee.Name = "radioNoordzee";
+            this.radioNoordzee.Size = new System.Drawing.Size(71, 17);
+            this.radioNoordzee.TabIndex = 7;
+            this.radioNoordzee.TabStop = true;
+            this.radioNoordzee.Text = "Noordzee";
+            this.radioNoordzee.UseVisualStyleBackColor = true;
+            // 
+            // motorBootLB
+            // 
+            this.motorBootLB.FormattingEnabled = true;
+            this.motorBootLB.Location = new System.Drawing.Point(218, 43);
+            this.motorBootLB.Name = "motorBootLB";
+            this.motorBootLB.Size = new System.Drawing.Size(75, 69);
+            this.motorBootLB.TabIndex = 14;
+            this.motorBootLB.SelectedIndexChanged += new System.EventHandler(this.motorBootLB_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(218, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 26);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Kies een boot om \r\nde radius te berekenen";
+            // 
             // sloepkeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 441);
+            this.ClientSize = new System.Drawing.Size(898, 441);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.motorBootLB);
+            this.Controls.Add(this.adminRadioWijzig);
+            this.Controls.Add(this.adminRadioVoegToe);
+            this.Controls.Add(this.adminRadioVerwijder);
+            this.Controls.Add(this.adminLB);
+            this.Controls.Add(this.adminLabel);
+            this.Controls.Add(this.x);
+            this.Controls.Add(this.LBContracten);
             this.Controls.Add(this.nieuwContractBtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.AdminWachtwoordTextBox);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "sloepkeForm";
             this.Text = "T Sloepke";
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.budgetNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -203,7 +370,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TextBox AdminWachtwoordTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -214,6 +380,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button nieuwContractBtn;
+        private System.Windows.Forms.ListBox LBContracten;
+        private System.Windows.Forms.Button x;
+        private System.Windows.Forms.Label adminLabel;
+        private System.Windows.Forms.ListBox adminLB;
+        private System.Windows.Forms.RadioButton adminRadioVerwijder;
+        private System.Windows.Forms.RadioButton adminRadioVoegToe;
+        private System.Windows.Forms.RadioButton adminRadioWijzig;
+        private System.Windows.Forms.Button adminLogoutBtn;
+        private System.Windows.Forms.ListBox budgetBotenLB;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RadioButton radioNoordzee;
+        private System.Windows.Forms.RadioButton radioIjsselmeer;
+        private System.Windows.Forms.ListBox motorBootLB;
+        private System.Windows.Forms.Label label2;
     }
 }
 

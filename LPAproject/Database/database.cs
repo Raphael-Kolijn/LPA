@@ -30,6 +30,7 @@ namespace LPAproject
             return returnvalue;
         }
 
+        // SLuit de connectie
         public static void CloseConnection()
         {
             try
@@ -41,6 +42,8 @@ namespace LPAproject
         /// Haalt het command-object op waarmee queries uitgevoerd kunnen worden.
         public static OracleCommand Command { get { return m_command; } }
 
+
+        // Methode om te testen/verwijder op tijd
         public static bool postToBlog(string postText, string disciplineCat, string platformCat)
         {
             string result = "no";
@@ -79,6 +82,28 @@ namespace LPAproject
             return ok;
         }
 
+        // Sla een huurder op in de database
+        public static bool insertHuurder(string naam, string email)
+        {
+            bool ok = false;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "INSERT INTO HUURDER (Naam, EmailAdres) VALUES (:naam, :emailAdres)";
+                m_command.Parameters.Add("naam", OracleDbType.Varchar2).Value = naam;
+                m_command.Parameters.Add("emailAdres", OracleDbType.Varchar2).Value = email;
+                m_command.ExecuteNonQuery();
+
+            }
+            catch (OracleException ex)
+            {
+                database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
     }
 
 

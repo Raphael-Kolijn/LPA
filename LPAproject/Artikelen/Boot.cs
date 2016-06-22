@@ -8,7 +8,10 @@ namespace LPAproject
 {
     public abstract class Boot : prijs
     {
+        public string naam { get; set; }
         public bool motor { get; set; }
-        public int prijs { get; set; }
+        public double prijs { get; set; }
     }
+
+    
 }
