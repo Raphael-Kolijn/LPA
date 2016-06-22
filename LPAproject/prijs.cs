@@ -8,5 +8,6 @@ namespace LPAproject
 {
     interface prijs
     {
+        int prijs { get; set; }
     }
 }

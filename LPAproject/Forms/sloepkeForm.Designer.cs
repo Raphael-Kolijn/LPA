@@ -33,13 +33,13 @@
             this.AdminWachtwoordTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.budgetNUD = new System.Windows.Forms.NumericUpDown();
-            this.budgetBootCB = new System.Windows.Forms.ComboBox();
-            this.budgetBijkomendeArtikelenCB = new System.Windows.Forms.ComboBox();
             this.budgetBijkomendeArtikelenLB = new System.Windows.Forms.ListBox();
+            this.budgetBijkomendeArtikelenCB = new System.Windows.Forms.ComboBox();
+            this.budgetBootCB = new System.Windows.Forms.ComboBox();
+            this.budgetNUD = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.nieuwContractBtn = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.budgetNUD)).BeginInit();
             this.SuspendLayout();
@@ -93,6 +93,41 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Budget Berekening";
             // 
+            // budgetBijkomendeArtikelenLB
+            // 
+            this.budgetBijkomendeArtikelenLB.FormattingEnabled = true;
+            this.budgetBijkomendeArtikelenLB.Location = new System.Drawing.Point(7, 102);
+            this.budgetBijkomendeArtikelenLB.Name = "budgetBijkomendeArtikelenLB";
+            this.budgetBijkomendeArtikelenLB.Size = new System.Drawing.Size(187, 199);
+            this.budgetBijkomendeArtikelenLB.TabIndex = 3;
+            // 
+            // budgetBijkomendeArtikelenCB
+            // 
+            this.budgetBijkomendeArtikelenCB.FormattingEnabled = true;
+            this.budgetBijkomendeArtikelenCB.Items.AddRange(new object[] {
+            "zwemvest",
+            "peddel",
+            "dekzeil",
+            "kampeerset"});
+            this.budgetBijkomendeArtikelenCB.Location = new System.Drawing.Point(7, 74);
+            this.budgetBijkomendeArtikelenCB.Name = "budgetBijkomendeArtikelenCB";
+            this.budgetBijkomendeArtikelenCB.Size = new System.Drawing.Size(121, 21);
+            this.budgetBijkomendeArtikelenCB.TabIndex = 2;
+            this.budgetBijkomendeArtikelenCB.Text = "Bijkomde artikelen..";
+            this.budgetBijkomendeArtikelenCB.SelectedIndexChanged += new System.EventHandler(this.budgetBijkomendeArtikelenCB_SelectedIndexChanged);
+            // 
+            // budgetBootCB
+            // 
+            this.budgetBootCB.FormattingEnabled = true;
+            this.budgetBootCB.Items.AddRange(new object[] {
+            "Spier",
+            "Motor"});
+            this.budgetBootCB.Location = new System.Drawing.Point(7, 47);
+            this.budgetBootCB.Name = "budgetBootCB";
+            this.budgetBootCB.Size = new System.Drawing.Size(121, 21);
+            this.budgetBootCB.TabIndex = 1;
+            this.budgetBootCB.Text = "Boot type..";
+            // 
             // budgetNUD
             // 
             this.budgetNUD.Location = new System.Drawing.Point(7, 20);
@@ -115,41 +150,6 @@
             0,
             0});
             // 
-            // budgetBootCB
-            // 
-            this.budgetBootCB.FormattingEnabled = true;
-            this.budgetBootCB.Items.AddRange(new object[] {
-            "Spier",
-            "Motor"});
-            this.budgetBootCB.Location = new System.Drawing.Point(7, 47);
-            this.budgetBootCB.Name = "budgetBootCB";
-            this.budgetBootCB.Size = new System.Drawing.Size(121, 21);
-            this.budgetBootCB.TabIndex = 1;
-            this.budgetBootCB.Text = "Boot type..";
-            // 
-            // budgetBijkomendeArtikelenCB
-            // 
-            this.budgetBijkomendeArtikelenCB.FormattingEnabled = true;
-            this.budgetBijkomendeArtikelenCB.Items.AddRange(new object[] {
-            "zwemvest",
-            "peddel",
-            "dekzeil",
-            "kampeerset"});
-            this.budgetBijkomendeArtikelenCB.Location = new System.Drawing.Point(7, 74);
-            this.budgetBijkomendeArtikelenCB.Name = "budgetBijkomendeArtikelenCB";
-            this.budgetBijkomendeArtikelenCB.Size = new System.Drawing.Size(121, 21);
-            this.budgetBijkomendeArtikelenCB.TabIndex = 2;
-            this.budgetBijkomendeArtikelenCB.Text = "Bijkomde artikelen..";
-            this.budgetBijkomendeArtikelenCB.SelectedIndexChanged += new System.EventHandler(this.budgetBijkomendeArtikelenCB_SelectedIndexChanged);
-            // 
-            // budgetBijkomendeArtikelenLB
-            // 
-            this.budgetBijkomendeArtikelenLB.FormattingEnabled = true;
-            this.budgetBijkomendeArtikelenLB.Location = new System.Drawing.Point(7, 102);
-            this.budgetBijkomendeArtikelenLB.Name = "budgetBijkomendeArtikelenLB";
-            this.budgetBijkomendeArtikelenLB.Size = new System.Drawing.Size(187, 199);
-            this.budgetBijkomendeArtikelenLB.TabIndex = 3;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -168,21 +168,22 @@
             this.button2.Text = "Exporteer";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // nieuwContractBtn
             // 
-            this.button3.Location = new System.Drawing.Point(520, 42);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(114, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Nieuw contract";
-            this.button3.UseVisualStyleBackColor = true;
+            this.nieuwContractBtn.Location = new System.Drawing.Point(520, 42);
+            this.nieuwContractBtn.Name = "nieuwContractBtn";
+            this.nieuwContractBtn.Size = new System.Drawing.Size(114, 23);
+            this.nieuwContractBtn.TabIndex = 7;
+            this.nieuwContractBtn.Text = "Nieuw contract";
+            this.nieuwContractBtn.UseVisualStyleBackColor = true;
+            this.nieuwContractBtn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // Form1
+            // sloepkeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 441);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.nieuwContractBtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
@@ -190,7 +191,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "sloepkeForm";
             this.Text = "T Sloepke";
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.budgetNUD)).EndInit();
@@ -212,7 +213,7 @@
         private System.Windows.Forms.NumericUpDown budgetNUD;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button nieuwContractBtn;
     }
 }
 

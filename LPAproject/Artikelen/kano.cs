@@ -8,6 +8,7 @@ namespace LPAproject
 {
     class kano : Boot
     {
-
+        private bool motor = false;
+        public int prijs = 10;
     }
 }

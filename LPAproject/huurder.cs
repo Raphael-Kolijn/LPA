@@ -8,5 +8,13 @@ namespace LPAproject
 {
     class huurder
     {
+        public string naam;
+        public string email;
+
+        public huurder(string Naam, string Email)
+        {
+            this.naam = Naam;
+            this.email = Email;
+        }
     }
 }
