@@ -13,7 +13,7 @@ namespace LPAproject
 {
     public partial class contractForm : Form
     {
-        // Te veel code in de Form, slechte gewoonte. Op terugkomen
+        // Te veel code in de Form, slechte gewoonte. Op terugkomen.
         string huurderNaam;
         string huurderEmail;
         public static List<contract> alleContracten = new List<contract>();
