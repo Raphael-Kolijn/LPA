@@ -23,6 +23,7 @@ namespace LPAproject  // Test Textenc
         public bool ijsselMeer;
         public int aantalMeren;
 
+        // Alle zaken die moeten plaatsvinden bij het laden van de form
         public sloepkeForm()
         {
             InitializeComponent();
@@ -48,7 +49,8 @@ namespace LPAproject  // Test Textenc
             }
             else
             {
-                MessageBox.Show("Verkeerd wachtwoord!");
+                // Na drie keer zou deze optie kunnen locken. qwerty is hier aangegeven omdat dit een prototype betreft
+                MessageBox.Show("Verkeerd wachtwoord! Probeer qwerty");
             }
         }
 
@@ -144,8 +146,10 @@ namespace LPAproject  // Test Textenc
                 YorN = "N";
             }
             database.insertVaarwater(adminWaterNaam.Text, YorN);
+            MessageBox.Show("Vaarwater is toegevoegd");
         }
 
+        // Het aantal meren berekenen aan de hand van het budget
         private void button3_Click_1(object sender, EventArgs e)
         {
             foreach(string motor in s_BudgetBoten)
@@ -177,10 +181,6 @@ namespace LPAproject  // Test Textenc
             MessageBox.Show("Het aantal meren dat u met dit budget kunt bevaren is" + " " + Convert.ToString(aantalMeren));
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-     
+   
     }
 }

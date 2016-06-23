@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LPAprojectTests
+namespace LPAprojectTests // Geen tijd en aandacht besteed aan unit tests. Deze werkende test bj wijze van demonstratie
 {
     
     [TestClass]

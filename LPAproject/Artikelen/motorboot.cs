@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LPAproject
 {
-    public class motorboot : Boot
+    public class motorboot : Boot // Had met meer tijd de klassen beter gebruikt. 
     {
         public static List<motorboot> alleMotorBoten = new List<motorboot>();
 

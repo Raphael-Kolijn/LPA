@@ -83,13 +83,15 @@ namespace LPAproject
                 c_bijbehorendeArtikelen.Add(extraArtikel);
             }
 
-            // Het aanmaken van een huurder voor in het contract
+            // Het aanmaken van een huurder voor in het contract - verschillende dingen geprobeerd, echter niet gelukt op moment van schrijven. 
+            //string startDatum = c_DTPickerVan.Value.ToString("yyyy-MM-dd");
+            //string eindDatum = c_DTPickerTot.Value.ToString("yyyy-MM-dd");
             huurderNaam = c_VerhuurderNaam.Text;
             huurderEmail = c_VerhuurderEmail.Text;
             huurder huurder = new huurder(huurderNaam, huurderEmail);
             database.insertHuurder(huurderNaam, huurderEmail);
             contract contract = new contract(huurder, c_BootObjecten, c_bijbehorendeArtikelen, c_DTPickerVan.Value, c_DTPickerTot.Value);
-            database.insertContract(huurder.naam.ToString(), "DummyTekst", 1, c_DTPickerVan.Value, c_DTPickerTot.Value); // Onbekende error. Hierdoor kan ik contracten niet toevoegen aan, en ophalen uit de database.
+            database.insertContract(huurder.naam.ToString(), "DummyTekst", 1, c_DTPickerVan.Value, c_DTPickerTot.Value); 
             alleContracten.Add(contract);
             
             
