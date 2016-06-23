@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LPAproject
 {
@@ -20,10 +21,13 @@ namespace LPAproject
         List<Boot> c_BootObjecten = new List<Boot>();
         List<string> c_BijbehorendeObjecten = new List<string>();
         List<bijkomendArtikel> c_bijbehorendeArtikelen = new List<bijkomendArtikel>();
+        public static string contractFile;
 
-        public contractForm()
+        public contractForm(string huurderNaam, string huurderEmail)
         {
             InitializeComponent();
+            c_VerhuurderEmail.Text = huurderEmail;
+            c_VerhuurderNaam.Text = huurderNaam;
         }
 
         // Het opslaan van de bijbehorende objecten in een contract
@@ -85,15 +89,36 @@ namespace LPAproject
             huurder huurder = new huurder(huurderNaam, huurderEmail);
             database.insertHuurder(huurderNaam, huurderEmail);
             contract contract = new contract(huurder, c_BootObjecten, c_bijbehorendeArtikelen, c_DTPickerVan.Value, c_DTPickerTot.Value);
+            database.insertContract(huurder.naam.ToString(), "DummyTekst", 1, c_DTPickerVan.Value, c_DTPickerTot.Value); // Onbekende error. Hierdoor kan ik contracten niet toevoegen aan, en ophalen uit de database.
             alleContracten.Add(contract);
             
             
             this.Close();
         }
 
-        private void c_BijkomendeArtikelenLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        // Het exporteren van een contract. Dit kan vanuit de form van een contract. Hier zouden de contracten in geladen moeten worden wanneer ze geselecteerd worden
+        // Echter vanwege het feit dat mijn insert query niet werkt op mijn contracten tabel is dit niet mogelijk. Nu is het enkel mogelijk om een contract te maken en meteen te exporteren.
+        private void c_exportBtn_Click(object sender, EventArgs e)
+        {         
+            // Een string array met de gegevens van het contract
+             string[] contractFile = { c_VerhuurderNaam.Text, c_VerhuurderEmail.Text, c_BootTB1.Text, c_BootTB2.Text, c_BootTB3.Text, c_BootTB3.Text, Convert.ToString(c_DTPickerVan.Value), Convert.ToString(c_DTPickerTot.Value) };
+
+            // Een variabele die een pad zet naar MyDocuments. - MSDN
+            string mydocpath =
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            // Schrijf de string array naar een bestand genaamd "WriteLines.txt".
+            using (StreamWriter outputFile = new StreamWriter(mydocpath + @"\WriteLines.txt"))
+            {
+                foreach (string line in contractFile)
+                    outputFile.WriteLine(line);
+                foreach (string line in c_BijbehorendeObjecten)
+                    outputFile.WriteLine(line);
+                
+            }
+            MessageBox.Show("Uw bestand is opgeslagen in MyDocuments/WriteLines.txt");
+            
         }    
     }
 }

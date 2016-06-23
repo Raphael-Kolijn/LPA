@@ -33,12 +33,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.adminLogoutBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.budgetBotenLB = new System.Windows.Forms.ListBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.budgetBijkomendeArtikelenLB = new System.Windows.Forms.ListBox();
             this.budgetBijkomendeArtikelenCB = new System.Windows.Forms.ComboBox();
             this.budgetBootCB = new System.Windows.Forms.ComboBox();
             this.budgetNUD = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.nieuwContractBtn = new System.Windows.Forms.Button();
             this.LBContracten = new System.Windows.Forms.ListBox();
             this.x = new System.Windows.Forms.Button();
@@ -47,15 +48,18 @@
             this.adminRadioVerwijder = new System.Windows.Forms.RadioButton();
             this.adminRadioVoegToe = new System.Windows.Forms.RadioButton();
             this.adminRadioWijzig = new System.Windows.Forms.RadioButton();
-            this.button3 = new System.Windows.Forms.Button();
-            this.budgetBotenLB = new System.Windows.Forms.ListBox();
-            this.radioIjsselmeer = new System.Windows.Forms.RadioButton();
-            this.radioNoordzee = new System.Windows.Forms.RadioButton();
             this.motorBootLB = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.adminVoegToeBtn = new System.Windows.Forms.Button();
+            this.adminGB = new System.Windows.Forms.GroupBox();
+            this.adminMeerCB = new System.Windows.Forms.ComboBox();
+            this.adminWaterNaam = new System.Windows.Forms.TextBox();
+            this.budgetIjsselmeerChck = new System.Windows.Forms.CheckBox();
+            this.budgetNoordzeeChck = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.budgetNUD)).BeginInit();
+            this.adminGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -99,8 +103,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioNoordzee);
-            this.groupBox2.Controls.Add(this.radioIjsselmeer);
+            this.groupBox2.Controls.Add(this.budgetNoordzeeChck);
+            this.groupBox2.Controls.Add(this.budgetIjsselmeerChck);
             this.groupBox2.Controls.Add(this.budgetBotenLB);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.budgetBijkomendeArtikelenLB);
@@ -113,6 +117,24 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Budget Berekening";
+            // 
+            // budgetBotenLB
+            // 
+            this.budgetBotenLB.FormattingEnabled = true;
+            this.budgetBotenLB.Location = new System.Drawing.Point(149, 102);
+            this.budgetBotenLB.Name = "budgetBotenLB";
+            this.budgetBotenLB.Size = new System.Drawing.Size(121, 173);
+            this.budgetBotenLB.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(7, 277);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Bereken";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // budgetBijkomendeArtikelenLB
             // 
@@ -182,15 +204,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Contracten";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(608, 13);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Exporteer";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // nieuwContractBtn
             // 
             this.nieuwContractBtn.Location = new System.Drawing.Point(608, 42);
@@ -238,14 +251,14 @@
             "deze kan verwijderen, toevoegen en wijzigen."});
             this.adminLB.Location = new System.Drawing.Point(320, 42);
             this.adminLB.Name = "adminLB";
-            this.adminLB.Size = new System.Drawing.Size(268, 342);
+            this.adminLB.Size = new System.Drawing.Size(268, 147);
             this.adminLB.TabIndex = 10;
             this.adminLB.Visible = false;
             // 
             // adminRadioVerwijder
             // 
             this.adminRadioVerwijder.AutoSize = true;
-            this.adminRadioVerwijder.Location = new System.Drawing.Point(320, 390);
+            this.adminRadioVerwijder.Location = new System.Drawing.Point(320, 197);
             this.adminRadioVerwijder.Name = "adminRadioVerwijder";
             this.adminRadioVerwijder.Size = new System.Drawing.Size(68, 17);
             this.adminRadioVerwijder.TabIndex = 11;
@@ -257,7 +270,7 @@
             // adminRadioVoegToe
             // 
             this.adminRadioVoegToe.AutoSize = true;
-            this.adminRadioVoegToe.Location = new System.Drawing.Point(407, 390);
+            this.adminRadioVoegToe.Location = new System.Drawing.Point(407, 197);
             this.adminRadioVoegToe.Name = "adminRadioVoegToe";
             this.adminRadioVoegToe.Size = new System.Drawing.Size(68, 17);
             this.adminRadioVoegToe.TabIndex = 12;
@@ -269,7 +282,7 @@
             // adminRadioWijzig
             // 
             this.adminRadioWijzig.AutoSize = true;
-            this.adminRadioWijzig.Location = new System.Drawing.Point(496, 390);
+            this.adminRadioWijzig.Location = new System.Drawing.Point(496, 197);
             this.adminRadioWijzig.Name = "adminRadioWijzig";
             this.adminRadioWijzig.Size = new System.Drawing.Size(53, 17);
             this.adminRadioWijzig.TabIndex = 13;
@@ -277,45 +290,6 @@
             this.adminRadioWijzig.Text = "Wijzig";
             this.adminRadioWijzig.UseVisualStyleBackColor = true;
             this.adminRadioWijzig.Visible = false;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(7, 277);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Bereken";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // budgetBotenLB
-            // 
-            this.budgetBotenLB.FormattingEnabled = true;
-            this.budgetBotenLB.Location = new System.Drawing.Point(149, 102);
-            this.budgetBotenLB.Name = "budgetBotenLB";
-            this.budgetBotenLB.Size = new System.Drawing.Size(121, 173);
-            this.budgetBotenLB.TabIndex = 5;
-            // 
-            // radioIjsselmeer
-            // 
-            this.radioIjsselmeer.AutoSize = true;
-            this.radioIjsselmeer.Location = new System.Drawing.Point(149, 47);
-            this.radioIjsselmeer.Name = "radioIjsselmeer";
-            this.radioIjsselmeer.Size = new System.Drawing.Size(71, 17);
-            this.radioIjsselmeer.TabIndex = 6;
-            this.radioIjsselmeer.TabStop = true;
-            this.radioIjsselmeer.Text = "Ijsselmeer";
-            this.radioIjsselmeer.UseVisualStyleBackColor = true;
-            // 
-            // radioNoordzee
-            // 
-            this.radioNoordzee.AutoSize = true;
-            this.radioNoordzee.Location = new System.Drawing.Point(149, 70);
-            this.radioNoordzee.Name = "radioNoordzee";
-            this.radioNoordzee.Size = new System.Drawing.Size(71, 17);
-            this.radioNoordzee.TabIndex = 7;
-            this.radioNoordzee.TabStop = true;
-            this.radioNoordzee.Text = "Noordzee";
-            this.radioNoordzee.UseVisualStyleBackColor = true;
             // 
             // motorBootLB
             // 
@@ -335,6 +309,69 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Kies een boot om \r\nde radius te berekenen";
             // 
+            // adminVoegToeBtn
+            // 
+            this.adminVoegToeBtn.Location = new System.Drawing.Point(6, 169);
+            this.adminVoegToeBtn.Name = "adminVoegToeBtn";
+            this.adminVoegToeBtn.Size = new System.Drawing.Size(75, 23);
+            this.adminVoegToeBtn.TabIndex = 16;
+            this.adminVoegToeBtn.Text = "Voeg toe";
+            this.adminVoegToeBtn.UseVisualStyleBackColor = true;
+            this.adminVoegToeBtn.Visible = false;
+            this.adminVoegToeBtn.Click += new System.EventHandler(this.adminVoegToeBtn_Click);
+            // 
+            // adminGB
+            // 
+            this.adminGB.Controls.Add(this.adminMeerCB);
+            this.adminGB.Controls.Add(this.adminWaterNaam);
+            this.adminGB.Controls.Add(this.adminVoegToeBtn);
+            this.adminGB.Location = new System.Drawing.Point(320, 225);
+            this.adminGB.Name = "adminGB";
+            this.adminGB.Size = new System.Drawing.Size(248, 198);
+            this.adminGB.TabIndex = 17;
+            this.adminGB.TabStop = false;
+            this.adminGB.Text = "Meer toevoegen";
+            this.adminGB.Visible = false;
+            // 
+            // adminMeerCB
+            // 
+            this.adminMeerCB.FormattingEnabled = true;
+            this.adminMeerCB.Items.AddRange(new object[] {
+            "Meer",
+            "Zee"});
+            this.adminMeerCB.Location = new System.Drawing.Point(7, 47);
+            this.adminMeerCB.Name = "adminMeerCB";
+            this.adminMeerCB.Size = new System.Drawing.Size(121, 21);
+            this.adminMeerCB.TabIndex = 18;
+            // 
+            // adminWaterNaam
+            // 
+            this.adminWaterNaam.Location = new System.Drawing.Point(7, 20);
+            this.adminWaterNaam.Name = "adminWaterNaam";
+            this.adminWaterNaam.Size = new System.Drawing.Size(100, 20);
+            this.adminWaterNaam.TabIndex = 17;
+            this.adminWaterNaam.Text = "Naam van water..";
+            // 
+            // budgetIjsselmeerChck
+            // 
+            this.budgetIjsselmeerChck.AutoSize = true;
+            this.budgetIjsselmeerChck.Location = new System.Drawing.Point(149, 20);
+            this.budgetIjsselmeerChck.Name = "budgetIjsselmeerChck";
+            this.budgetIjsselmeerChck.Size = new System.Drawing.Size(72, 17);
+            this.budgetIjsselmeerChck.TabIndex = 8;
+            this.budgetIjsselmeerChck.Text = "Ijsselmeer";
+            this.budgetIjsselmeerChck.UseVisualStyleBackColor = true;
+            // 
+            // budgetNoordzeeChck
+            // 
+            this.budgetNoordzeeChck.AutoSize = true;
+            this.budgetNoordzeeChck.Location = new System.Drawing.Point(149, 43);
+            this.budgetNoordzeeChck.Name = "budgetNoordzeeChck";
+            this.budgetNoordzeeChck.Size = new System.Drawing.Size(72, 17);
+            this.budgetNoordzeeChck.TabIndex = 9;
+            this.budgetNoordzeeChck.Text = "Noordzee";
+            this.budgetNoordzeeChck.UseVisualStyleBackColor = true;
+            // 
             // sloepkeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,18 +387,20 @@
             this.Controls.Add(this.x);
             this.Controls.Add(this.LBContracten);
             this.Controls.Add(this.nieuwContractBtn);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.AdminWachtwoordTextBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.adminGB);
             this.Name = "sloepkeForm";
             this.Text = "T Sloepke";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.budgetNUD)).EndInit();
+            this.adminGB.ResumeLayout(false);
+            this.adminGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,7 +417,6 @@
         private System.Windows.Forms.ComboBox budgetBootCB;
         private System.Windows.Forms.NumericUpDown budgetNUD;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button nieuwContractBtn;
         private System.Windows.Forms.ListBox LBContracten;
         private System.Windows.Forms.Button x;
@@ -390,10 +428,14 @@
         private System.Windows.Forms.Button adminLogoutBtn;
         private System.Windows.Forms.ListBox budgetBotenLB;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RadioButton radioNoordzee;
-        private System.Windows.Forms.RadioButton radioIjsselmeer;
         private System.Windows.Forms.ListBox motorBootLB;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button adminVoegToeBtn;
+        private System.Windows.Forms.GroupBox adminGB;
+        private System.Windows.Forms.ComboBox adminMeerCB;
+        private System.Windows.Forms.TextBox adminWaterNaam;
+        private System.Windows.Forms.CheckBox budgetNoordzeeChck;
+        private System.Windows.Forms.CheckBox budgetIjsselmeerChck;
     }
 }
 

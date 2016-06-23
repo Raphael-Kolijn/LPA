@@ -51,6 +51,7 @@
     <Compile Include="Artikelen\bijkomendArtikel.cs" />
     <Compile Include="Artikelen\Boot.cs" />
     <Compile Include="adminLogin.cs" />
+    <Compile Include="budgetBerekening.cs" />
     <Compile Include="contract.cs" />
     <Compile Include="Forms\contractForm.cs">
       <SubType>Form</SubType>

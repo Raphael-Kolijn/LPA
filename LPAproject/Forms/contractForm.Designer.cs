@@ -41,6 +41,7 @@
             this.c_BootTB3 = new System.Windows.Forms.ComboBox();
             this.c_VerhuurderEmail = new System.Windows.Forms.TextBox();
             this.c_zeilBootTypeCB = new System.Windows.Forms.ComboBox();
+            this.c_exportBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // c_SlaOpBtn
@@ -73,7 +74,6 @@
             this.c_BijkomendeArtikelenLB.Name = "c_BijkomendeArtikelenLB";
             this.c_BijkomendeArtikelenLB.Size = new System.Drawing.Size(187, 199);
             this.c_BijkomendeArtikelenLB.TabIndex = 5;
-            this.c_BijkomendeArtikelenLB.SelectedIndexChanged += new System.EventHandler(this.c_BijkomendeArtikelenLB_SelectedIndexChanged);
             // 
             // c_BijkomendeArtikelenCB
             // 
@@ -176,11 +176,22 @@
             this.c_zeilBootTypeCB.TabIndex = 14;
             this.c_zeilBootTypeCB.Text = "ZeilbootType..";
             // 
+            // c_exportBtn
+            // 
+            this.c_exportBtn.Location = new System.Drawing.Point(169, 396);
+            this.c_exportBtn.Name = "c_exportBtn";
+            this.c_exportBtn.Size = new System.Drawing.Size(75, 23);
+            this.c_exportBtn.TabIndex = 15;
+            this.c_exportBtn.Text = "Export";
+            this.c_exportBtn.UseVisualStyleBackColor = true;
+            this.c_exportBtn.Click += new System.EventHandler(this.c_exportBtn_Click);
+            // 
             // contractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 431);
+            this.Controls.Add(this.c_exportBtn);
             this.Controls.Add(this.c_zeilBootTypeCB);
             this.Controls.Add(this.c_VerhuurderEmail);
             this.Controls.Add(this.c_BootTB3);
@@ -216,5 +227,6 @@
         private System.Windows.Forms.ComboBox c_BootTB3;
         private System.Windows.Forms.TextBox c_VerhuurderEmail;
         private System.Windows.Forms.ComboBox c_zeilBootTypeCB;
+        private System.Windows.Forms.Button c_exportBtn;
     }
 }

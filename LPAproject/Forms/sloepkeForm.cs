@@ -15,11 +15,18 @@ namespace LPAproject  // Test Textenc
     {
         List<string> s_BijbehorendeObjecten = new List<string>();
         List<string> s_BudgetBoten = new List<string>();
+        public static int inhoud;
+        public string YorN;
+        public static int bootPrijs;
+        public static int aantalBijkomendeArtikelen;
+        public bool noordZee;
+        public bool ijsselMeer;
+        public int aantalMeren;
 
         public sloepkeForm()
         {
             InitializeComponent();
-            motorboot motorboot = new motorboot(20, "testBoot");
+            motorboot motorboot = new motorboot(20, "De Clipper");
             LPAproject.motorboot.alleMotorBoten.Add(motorboot);
             motorBootLaden();
             contractenRefresh();
@@ -28,7 +35,7 @@ namespace LPAproject  // Test Textenc
         // Admin Login
         public void button1_Click(object sender, EventArgs e)
         {
-            if(AdminWachtwoordTextBox.Text == "qwerty")
+            if (AdminWachtwoordTextBox.Text == "qwerty")
             {
                 adminLogoutBtn.Visible = true;
                 adminLabel.Visible = true;
@@ -36,6 +43,8 @@ namespace LPAproject  // Test Textenc
                 adminRadioVoegToe.Visible = true;
                 adminRadioWijzig.Visible = true;
                 adminLB.Visible = true;
+                adminVoegToeBtn.Visible = true;
+                adminGB.Visible = true;
             }
             else
             {
@@ -46,18 +55,18 @@ namespace LPAproject  // Test Textenc
         // Maak een nieuw contract, opent een form
         private void button3_Click(object sender, EventArgs e)
         {
-            contractForm form = new contractForm();
+            contractForm form = new contractForm("Typ uw naam", "Typ uw e-mailadres");
             form.Show();
         }
-        
-        // Display de contracten in de listbox
+
+        // Display de contracten in de listbox. Email omdat deze uniek moet zijn, en zodoende is het mogelijk om de contracten opnieuw op te roepen
         public void contractenRefresh()
         {
-            foreach(contract contract in contractForm.alleContracten)
+            foreach (contract contract in contractForm.alleContracten)
             {
-                LBContracten.Items.Add(contract.huurder.naam.ToString());
+                LBContracten.Items.Add(contract.huurder.email.ToString());
                 LBContracten.Refresh();
-            }           
+            }
         }
 
         // Ververs de ListBox met daarin de contracten
@@ -72,17 +81,19 @@ namespace LPAproject  // Test Textenc
         // Toon motorboten om radius te berekenen
         public void motorBootLaden()
         {
-            foreach(motorboot motorboot in LPAproject.motorboot.alleMotorBoten)
+            foreach (motorboot motorboot in LPAproject.motorboot.alleMotorBoten)
             {
-                motorBootLB.Items.Add(motorboot.naam);
+                inhoud = motorboot.tankinhoud;
+                motorBootLB.Items.Add(motorboot.naam + " " + motorboot.tankinhoud);
                 motorBootLB.Refresh();
-            }           
+            }
         }
 
         // Selecteren van een contract
         private void LBContracten_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            contractForm form = new contractForm("TestTekst", LBContracten.SelectedItem.ToString());
+            form.Show();
         }
 
         // Uitloggen als admin
@@ -94,26 +105,82 @@ namespace LPAproject  // Test Textenc
             adminRadioVoegToe.Visible = false;
             adminRadioWijzig.Visible = false;
             adminLB.Visible = false;
+            adminVoegToeBtn.Visible = false;
+            adminGB.Visible = false;
         }
 
         // Toevoegen van bijkomende artikelen bij budgetberekening
         private void budgetBijkomendeArtikelenCB_SelectedIndexChanged(object sender, EventArgs e)
-        {           
+        {
             budgetBijkomendeArtikelenLB.Items.Add(budgetBijkomendeArtikelenCB.Text);
+            s_BijbehorendeObjecten.Add(budgetBijkomendeArtikelenCB.Text);
             budgetBijkomendeArtikelenCB.Refresh();
         }
 
         // Boten toevoegen voor budgetberekening
         private void budgetBootCB_SelectedIndexChanged(object sender, EventArgs e)
-        {          
+        {
             budgetBotenLB.Items.Add(budgetBootCB.Text);
+            s_BudgetBoten.Add(budgetBootCB.Text);
             budgetBotenLB.Refresh();
         }
 
-        // 
+        // Een motorboot kiezen om de radius te berekenen
         private void motorBootLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string radius = (inhoud * 15).ToString();
+            MessageBox.Show("De radius van" + " " + motorBootLB.SelectedItem.ToString() + " " + "is" + "" + radius);
+        }
+
+        // Voeg een vaarwater toe aan de database
+        private void adminVoegToeBtn_Click(object sender, EventArgs e)
+        {
+            if(adminMeerCB.SelectedItem.ToString() == "Meer")
+            {
+                YorN = "Y";
+            }
+            else
+            {
+                YorN = "N";
+            }
+            database.insertVaarwater(adminWaterNaam.Text, YorN);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            foreach(string motor in s_BudgetBoten)
+            {
+                if (motor == "Motor")
+                {
+                    bootPrijs += 15;
+                }
+                else
+                {
+                    bootPrijs += 10;
+                }
+            }
+
+            foreach(string artikel in s_BijbehorendeObjecten)
+            {
+                aantalBijkomendeArtikelen += 1;
+            }
             
-        }        
+            if(budgetNoordzeeChck.Checked == true)
+            {
+                noordZee = true;
+            }
+            if(budgetIjsselmeerChck.Checked == true)
+            {
+                ijsselMeer = true;
+            }
+            aantalMeren = budgetBerekening.berekenMeren(Convert.ToDouble(budgetNUD.Value), bootPrijs, aantalBijkomendeArtikelen, noordZee, ijsselMeer);
+            MessageBox.Show("Het aantal meren dat u met dit budget kunt bevaren is" + " " + Convert.ToString(aantalMeren));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+     
     }
 }

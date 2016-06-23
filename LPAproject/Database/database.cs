@@ -104,6 +104,56 @@ namespace LPAproject
             }
             return ok;
         }
+
+        // Sla een contract op in de database. ONGELDIGE VALUE: EINDDATUM. INSERT INTO HUURDER (Huurder, Naam, ArtikelID, StartDatum, EindDatum) VALUES ('Test', 'TestWater', 1, 23-6-2016, 24-6-2016);
+        // Het ContractID wordt aan de hand van een trigger in de database berekent.
+        public static bool insertContract(string Huurder, string NaamVaarWater, int ArtikelID, DateTime StartDatum, DateTime EindDatum)
+        {
+            bool ok = false;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "INSERT INTO HUURDER (Huurder, Naam, ArtikelID, StartDatum, EindDatum) VALUES (:Huurder, :Naam, :ArtikelID, :StartDatum, :EindDatum)";
+                m_command.Parameters.Add("Huurder", OracleDbType.Varchar2).Value = Huurder;
+                m_command.Parameters.Add("Naam", OracleDbType.Varchar2).Value = NaamVaarWater;
+                m_command.Parameters.Add("ArtikelID", OracleDbType.Int32).Value = ArtikelID;
+                m_command.Parameters.Add("StartDatum", OracleDbType.Date).Value = StartDatum;
+                m_command.Parameters.Add("EindDatum", OracleDbType.Date).Value = EindDatum;
+                m_command.ExecuteNonQuery();
+
+            }
+            catch (OracleException ex)
+            {
+                database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
+
+        // Het toevoegen van een meer of zee aan de database. 
+        public static bool insertVaarwater(string Naam, string YorN)
+        {
+            bool ok = false;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "INSERT INTO VAARWATER (Naam, Meer) VALUES (:Naam, :Meer)";
+                m_command.Parameters.Add("Naam", OracleDbType.Varchar2).Value = Naam;
+                m_command.Parameters.Add("Meer", OracleDbType.Varchar2).Value = YorN;
+                m_command.ExecuteNonQuery();
+
+            }
+            catch (OracleException ex)
+            {
+                database.CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return ok;
+        }
     }
 
 
